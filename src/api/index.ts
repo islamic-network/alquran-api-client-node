@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import JsonResponse from '../core/JsonResponse';
 import AlQuranException from '../core/Exception';
+import Logger from '../helpers/Logger';
 
 const API_URL = 'https://api.alquran.cloud/v1';
 
@@ -21,6 +22,7 @@ const API = {
       ...headers,
     };
 
+    Logger.debug('Requesting "' + url + '" with config:', config);
     const response = await fetch(url, config);
     if (response.ok) {
       return (await response.json()) as JsonResponse;

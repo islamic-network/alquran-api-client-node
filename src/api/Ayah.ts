@@ -2,8 +2,8 @@ import API from './index';
 import Ayah from '../entity/Ayah';
 import AlQuranException from '../core/Exception';
 
-const getAyah = async (reference: string, edition: string | null = null): Promise<Ayah> => {
-  const endpoint = '/ayah/' + reference + (edition ? '/' + edition : '');
+export const getAyah = async (reference: string | number, edition: string | null = null): Promise<Ayah> => {
+  const endpoint = '/ayah/' + String(reference) + (edition ? '/' + edition : '');
   const response = await API.request(endpoint);
 
   if (response.code === 200) {
@@ -13,4 +13,8 @@ const getAyah = async (reference: string, edition: string | null = null): Promis
   throw new AlQuranException('AlQuranCloudNodeJSClient ::: ALERT ::: Invalid response on endpoint "' + endpoint + '"');
 };
 
-export default getAyah;
+const AyahAPI = {
+  getAyah,
+};
+
+export default AyahAPI;
