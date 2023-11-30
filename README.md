@@ -22,17 +22,17 @@ npm i --save alquran-api-client
 
 #### Instantiate the Client
 ```
-import AlquranApiClientNode from 'alquran-api-client';
+import AlQuranApiClientNode from 'alquran-api-client';
 
 ```
 
 #### Getting an Ayah
 To get a single ayah, use:
 ```
-AlquranApiClientNode.getAyah('1').then((ayah: Ayah) => {
+AlQuranApiClientNode.getAyah('1').then((ayah: Ayah) => {
     // "ayah" will be Ayah 1
 });
-AlquranApiClientNode.getAyah(765, 'en.pickthall').then((ayah: Ayah) => {
+AlQuranApiClientNode.getAyah(765, 'en.pickthall').then((ayah: Ayah) => {
     // "ayah" will be Ayah 765 with Marmaduke Pickthall's English translation
 });
 ```
@@ -40,10 +40,10 @@ AlquranApiClientNode.getAyah(765, 'en.pickthall').then((ayah: Ayah) => {
 #### Getting a Surah
 To get a surah, use:
 ```
-AlquranApiClientNode.getSurah(36).then((surah: Surah) => {
+AlQuranApiClientNode.getSurah(36).then((surah: Surah) => {
     // "surah" will be Surah Yaseen
 });
-AlquranApiClientNode.getSurah(36, 'en.saad').then((surah: Surah) => {
+AlQuranApiClientNode.getSurah(36, 'en.saad').then((surah: Surah) => {
     // "surah" will be Surah Yaseen with Muhammad Asad's English translation
 });
 ```
@@ -51,7 +51,7 @@ AlquranApiClientNode.getSurah(36, 'en.saad').then((surah: Surah) => {
 #### Getting a Juz
 To get a juz, use:
 ```
-AlquranApiClientNode.getJuz(30).then((juz: Juz) => {
+AlQuranApiClientNode.getJuz(30).then((juz: Juz) => {
     // "juz" will be Juz 30 (there are only 30!)
 });
 ```
