@@ -1,5 +1,4 @@
 const fetch = require("isomorphic-unfetch")
-const querystring = require("querystring")
 
 class AlQuranApiClient {
     constructor(basePath) {
@@ -8,7 +7,7 @@ class AlQuranApiClient {
         }
     }
 
-    request(endpoint) { 
+    request(endpoint) {
         let url = this.basePath + endpoint
         console.log(url)
         let headers = {
@@ -33,7 +32,6 @@ class AlQuranApiClient {
     }
 
     ayah(reference, edition) {
-        //let qs = options ? "?" + querystring.stringify(options) : ""
         let url = "/ayah/"
 
         if (edition != null) {
@@ -41,7 +39,7 @@ class AlQuranApiClient {
         } else {
             url += reference
         }
-        
+
         return this.request(url)
     }
 

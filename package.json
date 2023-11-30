@@ -3,17 +3,28 @@
   "version": "1.0.0",
   "description": "An API Client for the AlQuran Cloud API",
   "main": "index.js",
+  "license": "GPL-3.0",
   "scripts": {
     "test": ""
   },
   "author": "Meezaan-ud-Din A Wal-Ikram <meezaan@islamic.network>",
+  "maintainers": [
+    {
+      "name": "Meezaan-ud-Din A Wal-Ikram",
+      "email": "meezaan@islamic.network",
+      "url": "https://islamic.network"
+    },
+    {
+      "name": "iSecNew10 OpenSource",
+      "email": "opensource@isecnew10.email",
+      "url": "https://isecnew10.com"
+    }
+  ],
   "repository": {
       "type" : "git",
       "url" : "https://github.com/islamic-network/alquran-api-client-node"
   },
-  "license": "GPL-3.0",
   "dependencies": {
-    "isomorphic-unfetch": "^3.0.0",
-    "querystring": "^0.2.0"
+    "isomorphic-unfetch": "^4.0.2"
   }
 }
