@@ -1,32 +1,32 @@
-import fetch from 'isomorphic-unfetch';
+import fetch from 'node-fetch';
 import JsonResponse from '../core/JsonResponse';
 import AlQuranException from '../core/Exception';
 
 const API_URL = 'https://api.alquran.cloud/v1';
 
-const AlQuranApiClient = {
+const API = {
   request: async (endpoint: string): Promise<JsonResponse> => {
-    let url = API_URL + endpoint;
-    let headers = {
+    const url = API_URL + endpoint;
+    const headers = {
       'Content-type': 'application/json',
       'User-Agent': 'AlQuranCloudNodeJSClient/1.0.1',
     };
 
-    let options = {
+    const options = {
       method: 'GET',
     };
 
-    let config = {
+    const config = {
       ...options,
       ...headers,
     };
 
     const response = await fetch(url, config);
     if (response.ok) {
-      return await response.json();
+      return (await response.json()) as JsonResponse;
     }
     throw new AlQuranException('AlQuranCloudNodeJSClient ::: ALERT ::: Unable to connect to the Al Quran Cloud API');
   },
 };
 
-export default AlQuranApiClient;
+export default API;

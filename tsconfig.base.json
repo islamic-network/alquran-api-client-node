@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./*"]
+    },
+    "declaration": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "declarationDir": "lib/types",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "es2021"
+    ],
+    "outDir": "lib",
+    "target": "es5",
+    "module": "ESNext",
+  },
+  "exclude": ["node_modules", "**/*.spec.ts", "lib"],
+  "include": [
+    "src/**/*.ts"
+  ]
+}

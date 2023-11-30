@@ -1,3 +1,2 @@
-type Entity = {};
-
+type Entity = object;
 export default Entity;

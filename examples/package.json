@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "type": "module",
+  "version": "0.0.1",
+  "dependencies": {
+    "alquran-api-client": "../"
+  }
+}

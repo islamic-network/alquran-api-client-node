@@ -1,14 +1,8 @@
 {
-  "compilerOptions":
-  {
-    "target": "es2018",
-    "module": "commonjs",
-    "outDir": "build",
-    "sourceMap": true,
-  },
-  "include": [
-    "index.ts",
-    "src/**/*.ts"
-  ],
-  "exclude": ["node_modules"],
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2019",
+    "outDir": "lib/cjs"
+  }
 }

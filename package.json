@@ -3,14 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "An API Client for the AlQuran Cloud API",
-  "main": "index.js",
-  "types": "index.d.ts",
   "license": "GPL-3.0",
-  "scripts": {
-    "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix",
-    "build": "tsc index.ts"
-  },
   "author": "Meezaan-ud-Din A Wal-Ikram <meezaan@islamic.network>",
   "maintainers": [
     {
@@ -28,23 +21,49 @@
     "type": "git",
     "url": "https://github.com/islamic-network/alquran-api-client-node"
   },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/mjs/index.js",
+      "require": "./lib/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib/cjs/index.js",
+  "module": "lib/mjs/index.js",
+  "types": "lib/types/index.d.ts",
+  "scripts": {
+    "clear": "rm -rf ./lib",
+    "patch:esm-js": "npx tsc-esm-fix --tsconfig=tsconfig.mjs.json",
+    "patch:esm-type": "echo '{ \"type\": \"module\" }' >> lib/mjs/package.json",
+    "build:esm": "npx tsc -p tsconfig.mjs.json && npm run patch:esm-js && npm run patch:esm-type",
+    "build:cjs": "npx tsc",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix",
+    "build": "npm run clear && npm run build:esm && npm run build:cjs",
+    "example": "cd examples && node ./ayah.js",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"esnext\"}' NODE_OPTIONS=\"--loader ts-node/esm\"  mocha --es-module-specifier-resolution=node"
+  },
   "dependencies": {
-    "@types/node": "^20.10.1",
-    "husky": "^8.0.3",
-    "isomorphic-unfetch": "^4.0.2"
+    "node-fetch": "2.7.0"
   },
   "devDependencies": {
-    "@testdeck/mocha": "^0.3.3",
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "latest",
+    "@types/node": "latest",
+    "@types/node-fetch": "^2.6.9",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
+    "assert": "latest",
     "chai": "^4.3.10",
     "eslint": "^8.54.0",
-    "mocha": "^10.2.0",
-    "nyc": "^15.1.0",
+    "husky": "^8.0.3",
+    "mocha": "latest",
     "prettier": "^3.1.0",
-    "ts-mockito": "^2.6.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.3.2"
+    "ts-node": "latest",
+    "tsc": "^2.0.4",
+    "tsc-esm-fix": "latest",
+    "typescript": "latest"
   },
   "husky": {
     "hooks": {
