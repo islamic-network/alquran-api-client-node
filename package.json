@@ -1,19 +1,71 @@
 {
   "name": "alquran-api-client",
+  "type": "module",
   "version": "1.0.0",
   "description": "An API Client for the AlQuran Cloud API",
-  "main": "index.js",
-  "scripts": {
-    "test": ""
-  },
-  "author": "Meezaan-ud-Din A Wal-Ikram <meezaan@islamic.network>",
-  "repository": {
-      "type" : "git",
-      "url" : "https://github.com/islamic-network/alquran-api-client-node"
-  },
   "license": "GPL-3.0",
+  "author": "Meezaan-ud-Din A Wal-Ikram <meezaan@islamic.network>",
+  "maintainers": [
+    {
+      "name": "Meezaan-ud-Din A Wal-Ikram",
+      "email": "meezaan@islamic.network",
+      "url": "https://islamic.network"
+    },
+    {
+      "name": "iSecNew10 OpenSource",
+      "email": "opensource@isecnew10.email",
+      "url": "https://isecnew10.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/islamic-network/alquran-api-client-node"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/mjs/index.js",
+      "require": "./lib/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib/cjs/index.js",
+  "module": "lib/mjs/index.js",
+  "types": "lib/types/index.d.ts",
+  "scripts": {
+    "clear": "rm -rf ./lib",
+    "patch:esm-js": "npx tsc-esm-fix --tsconfig=tsconfig.mjs.json",
+    "patch:esm-type": "echo '{ \"type\": \"module\" }' >> lib/mjs/package.json",
+    "build:esm": "npx tsc -p tsconfig.mjs.json && yarn patch:esm-js && yarn patch:esm-type",
+    "build:cjs": "npx tsc",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix",
+    "build": "yarn clear && yarn build:esm && yarn build:cjs",
+    "example": "cd examples && node --max-old-space-size=4096 ./examples.js",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"esnext\"}' NODE_OPTIONS=\"--loader ts-node/esm --max-old-space-size=4096\" mocha --es-module-specifier-resolution=node",
+    "debug:example": "yarn build && cd examples && rm -rf node_modules && yarn install && DEBUG=true node --max-old-space-size=4096 ./examples.js",
+    "debug:test": "yarn build && env TS_NODE_COMPILER_OPTIONS='{\"module\": \"esnext\"}' DEBUG=true NODE_OPTIONS=\"--loader ts-node/esm --max-old-space-size=4096\" mocha --es-module-specifier-resolution=node",
+    "prepare": "husky install"
+  },
   "dependencies": {
-    "isomorphic-unfetch": "^3.0.0",
-    "querystring": "^0.2.0"
+    "node-fetch": "2.7.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "latest",
+    "@types/node": "latest",
+    "@types/node-fetch": "^2.6.9",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "assert": "latest",
+    "chai": "^4.3.10",
+    "eslint": "^8.54.0",
+    "husky": "^8.0.3",
+    "mocha": "latest",
+    "prettier": "^3.1.0",
+    "ts-node": "latest",
+    "tsc": "^2.0.4",
+    "tsc-esm-fix": "latest",
+    "typescript": "latest"
   }
 }
