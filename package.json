@@ -67,10 +67,5 @@
     "tsc": "^2.0.4",
     "tsc-esm-fix": "latest",
     "typescript": "latest"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint && yarn test"
-    }
   }
 }
