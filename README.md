@@ -40,31 +40,36 @@ AlquranApiClientNode.getAyah(765, 'en.pickthall').then((ayah: Ayah) => {
 #### Getting a Surah
 To get a surah, use:
 ```
-$t->surah(36); // This will return Surah Yaseen
-$t->surah(36, 'en.asad'); // This will return Surah Yaseen with Muhammad Asad's English translation
+AlquranApiClientNode.getSurah(36).then((surah: Surah) => {
+    // "surah" will be Surah Yaseen
+});
+AlquranApiClientNode.getSurah(36, 'en.saad').then((surah: Surah) => {
+    // "surah" will be Surah Yaseen with Muhammad Asad's English translation
+});
 ```
 
 #### Getting a Juz
 To get a juz, use:
 ```
-$t->juz(30); // This will return Juz 30 (there are only 30!)
+AlquranApiClientNode.getJuz(30).then((juz: Juz) => {
+    // "juz" will be Juz 30 (there are only 30!)
+});
 ```
 
-#### Getting Editions, Searching and more...
-Please see the complete documentation in docs/index.html (Clone the repo and open the file in a browser).
+### Getting Editions, Searching and more...
+Please see all available API methods in the [examples directory](/examples).
+
+---
 
 ### Authors and Contributors
-Meezaan-ud-Din Abdu Dhil-Jalali Wal-Ikram (@meezaan).
+
+Meezaan-ud-Din Abdu Dhil-Jalali Wal-Ikram (@meezaan). [meezaan@islamic.network](meezaan@islamic.network)
+
+iSecNew10 OpenSource (@iSecNew10). [opensource@isecnew10.email](opensource@isecnew10.email)
 
 ### Support or Contact
 For support, please visit http://alquran.cloud/api or http://alquran.cloud/contact.
 
-## Maintainers
-
-Meezaan-ud-Din A Wal-Ikram [meezaan@islamic.network](meezaan@islamic.network)
-
-iSecNew10 OpenSource [opensource@isecnew10.email](opensource@isecnew10.email)
-
----
+----
 
 #### License: GPL-3.0
