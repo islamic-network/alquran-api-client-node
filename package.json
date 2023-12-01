@@ -1,7 +1,7 @@
 {
   "name": "alquran-api-client",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An API Client for the AlQuran Cloud API",
   "license": "GPL-3.0",
   "author": "Meezaan-ud-Din A Wal-Ikram <meezaan@islamic.network>",
